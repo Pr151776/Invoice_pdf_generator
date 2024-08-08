@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .invoice {
+            padding: 5px;
+        }
+        .invoice-header {
+            margin-bottom: 30px;
+        }
+        .invoice-footer {
+            margin-top: 30px;
+        }
+        .total_amount {
+            margin-left: 84%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="invoice">
+            <div class="invoice-header">
+                <h1 class="text-center">Invoice</h1>
+                <hr>
+                <div class="">
+                    <label for="docno">Doc.No</label>
+                    <input type="number" class="" id="docno" placeholder="Enter Document No">
+                </div>
+                <div class="">
+                    <label for="customerName">Customer Name</label>
+                    <input type="text" class="" id="customerName" placeholder="Enter customer name">
+                </div>
+                <div class="">
+                    <label for="docdate">Doc.Date</label>
+                    <input type="datetime" class="" id="docdate">
+                </div>
+            </div>
+            <div class="invoice-body">
+                <table class="table" id="invoiceTable">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Doc.No</th>
+                            <th scope="col">Doc.Date</th>
+                            <th scope="col">Customer</th>
+                            <th scope="col">Product Name</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="item_tbody">
+                        <!-- Invoice items will be added here -->
+                    </tbody>
+                </table>
+                <div class="total_amount">
+                    <span>Total Amount : </span>
+                    <input type="number" value="0" id="total_cal">
+                    <!-- <span id="total_cal">0</span> -->
+                </div>
+                <button class="btn btn-primary" onclick="addItem()">Add Item</button>
+            </div>
+            <div class="invoice-footer">
+                <button class="btn btn-success" onclick="generateInvoice()">Generate Invoice</button>
+            </div>
+        </div>
+    </div>
+    <script src="{{url_for('static', filename='invoice.js')}}"></script>
+</body>
+</html>
